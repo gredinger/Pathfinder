@@ -9,5 +9,5 @@
 namespace Pathfinder {
     include '../Class/Town.php';
     include "../Class/World.php";
-    include "../generate.php"
+    include "../generate.php";
 }
