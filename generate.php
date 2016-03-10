@@ -31,7 +31,6 @@ That's near unlimited and those items would sell for less there.
 
 $gonzonia = new Town();
 
-
 echo $gonzonia->getPopulation();
 
 ?>

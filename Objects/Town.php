@@ -35,7 +35,7 @@ class Town
     }
 
     private function generateRandomTown() {
-        $this->population = 50;
+        $this->population = rand(5,100000);
 
         $town = base64_encode($this->population);
 
