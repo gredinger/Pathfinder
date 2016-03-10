@@ -1,4 +1,8 @@
-<?
+<?php
+
+
+namespace Pathfinder;
+
 
 $citySize = 200;
 $humanpercent = .5;

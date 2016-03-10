@@ -1,5 +1,7 @@
 <?php
 
+namespace Pathfinder;
+
 /**
  * Created by IntelliJ IDEA.
  * User: Gene
