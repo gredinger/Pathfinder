@@ -36,6 +36,8 @@ class Town
 
     function generateRandomTown() {
         $this->population = 50;
+
+        $this->town = base64_encode($this->population);
     }
     public function __construct($data = null) {
         if($data === null) $this->town = generateRandomTown();
