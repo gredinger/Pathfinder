@@ -25,8 +25,6 @@ That's near unlimited and those items would sell for less there.
 
 $gonzonia = new Town();
 
-$gonzonia->setPopulation(10000);
-
-$gonzonia->loadTable();
+$gonzonia->getPopulation();
 
 ?>

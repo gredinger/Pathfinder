@@ -28,10 +28,18 @@ class Town
 
     }
 
-    public function __construct(Town $town, $generatePhysics) {
+    function getTownHash() {
 
     }
 
+    function generateRandomTown() {
+        $this->population = 50;
+    }
+    public function __construct($data = null) {
+        if($data === null) $this->town = generateRandomTown();
+
+
+    }
 
     public function createArray() {
         $dataArray = array("","");
