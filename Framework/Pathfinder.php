@@ -7,7 +7,8 @@
  * Time: 9:38 PM
  */
 namespace Pathfinder {
-    include '../Objects/Town.php';
-    include "../Objects/World.php";
-    include "../generate.php";
+    include $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR.'Objects'.DIRECTORY_SEPARATOR.'Town.php';
+    include $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR."Objects".DIRECTORY_SEPARATOR."World.php";
+    include $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR."generate.php";
+
 }
