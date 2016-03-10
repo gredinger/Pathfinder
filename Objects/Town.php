@@ -34,16 +34,17 @@ class Town
 
     }
 
-    function generateRandomTown() {
+    private function generateRandomTown() {
         $this->population = 50;
 
-        $this->town = base64_encode($this->population);
+        $town = base64_encode($this->population);
 
-        return $this->town;
     }
     public function __construct($data = null) {
-        if($data === null) $this->town = generateRandomTown();
+        if(null === $data) {
+            $this->generateRandomTown();
 
+        }
 
     }
 

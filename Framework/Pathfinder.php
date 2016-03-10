@@ -7,7 +7,7 @@
  * Time: 9:38 PM
  */
 namespace Pathfinder {
-    include '../Class/Town.php';
-    include "../Class/World.php";
+    include '../Objects/Town.php';
+    include "../Objects/World.php";
     include "../generate.php";
 }

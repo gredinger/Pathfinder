@@ -4,6 +4,8 @@
 namespace Pathfinder;
 
 
+include "Framework/Pathfinder.php";
+
 $citySize = 200;
 $humanpercent = .5;
 $malepercent = .5;
@@ -28,6 +30,8 @@ That's near unlimited and those items would sell for less there.
 */
 
 $gonzonia = new Town();
+
+
 echo $gonzonia->getPopulation();
 
 ?>
