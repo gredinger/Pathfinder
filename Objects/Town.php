@@ -15,6 +15,7 @@ class Town
     private $townID;
     private $townName;
     private $population;
+    private $townHash;
 
     function getPopulation() {
         return $this->population;
@@ -43,9 +44,12 @@ class Town
     public function __construct($data = null) {
         if(null === $data) {
             $this->generateRandomTown();
-
         }
 
+    }
+
+    function generateHash() {
+        $this->townHash = md5($this->town);
     }
 
     public function createArray() {

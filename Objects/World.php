@@ -1,6 +1,6 @@
 <?php
 
-namespace Pathfinder\Objects;
+namespace Pathfinder;
 
 /**
  * Created by IntelliJ IDEA.

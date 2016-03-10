@@ -33,4 +33,8 @@ $gonzonia = new Town();
 
 echo $gonzonia->getPopulation();
 
+$arrayTable = new \ArrayTable($gonzonia->createArray());
+
+$arrayTable->generateHTML();
+
 ?>
