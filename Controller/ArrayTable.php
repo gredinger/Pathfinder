@@ -6,6 +6,8 @@
  * Date: 3/9/2016
  * Time: 8:54 PM
  */
+namespace Pathfinder;
+
 class ArrayTable
 {
     private $tableInformation;
