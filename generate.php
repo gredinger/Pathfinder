@@ -5,6 +5,7 @@ namespace Pathfinder;
 
 
 include "Framework/Pathfinder.php";
+include "Controller/ArrayTable.php";
 
 $citySize = 200;
 $humanpercent = .5;
@@ -33,7 +34,7 @@ $gonzonia = new Town();
 
 echo $gonzonia->getPopulation();
 
-$arrayTable = new \ArrayTable($gonzonia->createArray());
+$arrayTable = new ArrayTable($gonzonia->createArray());
 
 $arrayTable->generateHTML();
 

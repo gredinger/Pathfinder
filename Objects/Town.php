@@ -57,6 +57,8 @@ class Town
 
         $dataArray[0][0] = array("Population");
         $dataArray[1][0] = array($this->population);
+
+        return $dataArray;
     }
 
     public function loadTable()
