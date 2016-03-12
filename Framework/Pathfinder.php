@@ -7,9 +7,9 @@
  * Time: 9:38 PM
  */
 namespace Pathfinder {
-    include $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR.'Objects'.DIRECTORY_SEPARATOR.'Town.php';
-    include $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR."Objects".DIRECTORY_SEPARATOR."World.php";
-    include $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR."Controller".DIRECTORY_SEPARATOR."ArrayTable.php";
-    include $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR."generate.php";
+    include_once $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR.'Objects'.DIRECTORY_SEPARATOR.'Town.php';
+    include_once $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR."Objects".DIRECTORY_SEPARATOR."World.php";
+    include_once $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR."Controller".DIRECTORY_SEPARATOR."ArrayTable.php";
+    include_once $_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR."generate.php";
 
 }

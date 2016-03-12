@@ -4,8 +4,8 @@
 namespace Pathfinder;
 
 
-include "Framework/Pathfinder.php";
-include "Controller/ArrayTable.php";
+include_once "Framework/Pathfinder.php";
+include_once "Controller/ArrayTable.php";
 
 $citySize = 200;
 $humanpercent = .5;
