@@ -17,6 +17,7 @@ func GenerateWorld(world [][]string, gridSpace, year int) {
 	dc := gg.NewContext(len(world)*gridSpace, len(world[0])*gridSpace)
 	tiles := loadTiles()
 	for x := 0; x < len(world); x++ {
+		fmt.Printf("World Generation: %v\n", float64(float64(x)/float64(len(world))))
 		for y := 0; y < len(world[x]); y++ {
 			dc.DrawImage(getTile(world[x][y], tiles).Im, x*gridSpace, y*gridSpace)
 		}

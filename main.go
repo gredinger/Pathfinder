@@ -10,8 +10,8 @@ import (
 )
 
 func main() {
-	water := model.GenerateWater(100, 100)
-	for i := 0; i < 10000; i++ {
+	water := model.GenerateWater(50, 80)
+	for i := 0; i < 30000; i++ {
 		water = controller.AgeWorld(water)
 		fmt.Printf("The world is %v years old.\n", i)
 	}
