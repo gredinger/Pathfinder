@@ -5,12 +5,17 @@ import (
 	"math/rand"
 
 	"github.com/fogleman/gg"
+	"github.com/gredinger/pathfinder/controller"
 	"github.com/gredinger/pathfinder/model"
 )
 
 func main() {
-	generateWorld()
-	makeImage()
+	water := model.GenerateWater(100, 100)
+	for i := 0; i < 100; i++ {
+		controller.AgeWorld(water)
+		model.GenerateWorld(water, 128, i)
+	}
+	//makeImage()
 }
 
 // Generates the entire world
@@ -23,21 +28,19 @@ func generateWorld() {
 
 func makeImage() {
 	gridSize := 128
-	gridSpace := 100
+	gridSpace := 25
+
 	area := gridSpace * gridSize
 	dc := gg.NewContext(area, area)
 	grass, _ := gg.LoadPNG("assets/grass.png")
 	water, _ := gg.LoadPNG("assets/water.png")
 	farea := float64(area)
-
-	dc.SetRGB(1, 1, 1)
-	dc.Clear()
 	dc.SetLineWidth(3)
 	dc.SetRGB(0, 0, 0)
 	for i := 0; i <= area; i += gridSize {
 		for y := 0; y <= area; y += gridSize {
 			im := water
-			if rand.Float64() > .5 {
+			if rand.Float64() > .2 {
 				im = grass
 			}
 			dc.DrawImage(im, i, y)
