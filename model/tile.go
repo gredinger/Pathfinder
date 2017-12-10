@@ -18,7 +18,6 @@ func GenerateWorld(world [][]string, gridSpace, year int) {
 	tiles := loadTiles()
 	for x := 0; x < len(world); x++ {
 		for y := 0; y < len(world[x]); y++ {
-			fmt.Printf("Drawing block: %v,%v\n", x, y)
 			dc.DrawImage(getTile(world[x][y], tiles).Im, x*gridSpace, y*gridSpace)
 		}
 	}
@@ -36,7 +35,6 @@ func GenerateWater(x, y int) [][]string {
 	for i := 0; i < x; i++ {
 		tiles[i] = make([]string, y)
 		for f := 0; f < y; f++ {
-			fmt.Printf("Making water block %v,%v\n", i, f)
 			tiles[i][f] = "water"
 		}
 	}
