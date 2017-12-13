@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"image"
 
+	"github.com/nfnt/resize"
+
 	"github.com/fogleman/gg"
 )
 
@@ -12,60 +14,59 @@ type Tile struct {
 	Im   image.Image
 }
 
-//GenerateWorld converts a tile array to image using the gridSpace amount of pixels for each square
-func GenerateWorld(world [][]string, gridSpace, year int) {
-	dc := gg.NewContext(len(world)*gridSpace, len(world[0])*gridSpace)
-	tiles := loadTiles()
-	for x := 0; x < len(world); x++ {
-		fmt.Printf("World Generation: %v\n", float64(float64(x)/float64(len(world))))
-		for y := 0; y < len(world[x]); y++ {
-			dc.DrawImage(getTile(world[x][y], tiles).Im, x*gridSpace, y*gridSpace)
-		}
-	}
-
-	dc.SavePNG(fmt.Sprintf("world/%v.png", year))
-}
-
-var tiles = []string{
+var localTiles = []string{
 	"water",
 	"grass",
 }
 
-func GenerateWater(x, y int) [][]string {
+func GenerateBase(x, y, id int) [][]string {
 	tiles := make([][]string, x)
 	for i := 0; i < x; i++ {
 		tiles[i] = make([]string, y)
 		for f := 0; f < y; f++ {
-			tiles[i][f] = "water"
+			tiles[i][f] = GetTile(id).Name
 		}
 	}
 	return tiles
 }
 
-func getTile(name string, tiles []Tile) Tile {
+// Returns the tile by ID, should be a sql select statement dude
+func GetTile(id int) Tile {
+	return getTiles()[id]
+}
+
+// Returns the tile from the tile array you pass to it. Idk how good this is, i feel as though the memory would be duplicated, but at the same time
+// I think that Go would compenstate for idiots like me.
+func GetTileByName(name string, tiles []Tile) Tile {
 	for _, v := range tiles {
 		if v.Name == name {
 			return v
 		}
 	}
-	return waterTile()
+	return tiles[0]
 }
 
-func waterTile() Tile {
-	tile, _ := gg.LoadPNG("assets/water.png")
-	return Tile{
-		Name: "water",
-		Im:   tile,
+//getTiles is a terrible function that's meant to statically load shit cause we don't have an actual database.
+// This should be replaced by like a select all or some shit.
+func getTiles() []Tile {
+	ta := []Tile{}
+	for _, v := range localTiles {
+		ta = append(ta, Tile{
+			Name: v,
+		})
 	}
+	return ta
 }
 
-func loadTiles() []Tile {
+// LoadsTiles with resizing and with image attached (used to render)
+func LoadTilesImageSized(size uint) []Tile {
 	tileArray := []Tile{}
-	for _, t := range tiles {
-		tile, _ := gg.LoadPNG(fmt.Sprintf("assets/%s.png", t))
+	for _, t := range getTiles() {
+		tile, _ := gg.LoadPNG(fmt.Sprintf("assets/%s.png", t.Name))
+		tR := resize.Resize(size, 0, tile, resize.Lanczos3)
 		tileArray = append(tileArray, Tile{
-			Name: t,
-			Im:   tile,
+			Name: t.Name,
+			Im:   tR,
 		})
 	}
 	return tileArray

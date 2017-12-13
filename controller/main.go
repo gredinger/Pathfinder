@@ -1,9 +1,15 @@
 package controller
 
 import (
-	"fmt"
 	"math/rand"
 )
+
+func AgeWorldCycles(world [][]string, age int) [][]string {
+	for i := 0; i < age; i++ {
+		world = AgeWorld(world)
+	}
+	return world
+}
 
 func AgeWorld(world [][]string) [][]string {
 	for x, _ := range world {
@@ -34,7 +40,7 @@ func AgeWorld(world [][]string) [][]string {
 }
 
 func placeTile(x, y int, tile string, world [][]string) [][]string {
-	fmt.Printf("Placing %v at %v,%v\n", tile, x, y)
+	//fmt.Printf("Placing %v at %v,%v\n", tile, x, y)
 	if x < 0 || x >= len(world) {
 		return world
 	}
@@ -47,7 +53,7 @@ func placeTile(x, y int, tile string, world [][]string) [][]string {
 }
 
 func flood(x, y, size int, world [][]string) [][]string {
-	fmt.Printf("Fucking your shit around %v,%v with this much water %v\n", x, y, size)
+	// fmt.Printf("Fucking your shit around %v,%v with this much water %v\n", x, y, size)
 	sx := x - size
 	sy := y - size
 	for i := 0; i < size; i++ {

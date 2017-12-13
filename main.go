@@ -3,20 +3,24 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 
 	"github.com/fogleman/gg"
 	"github.com/gredinger/pathfinder/controller"
 	"github.com/gredinger/pathfinder/model"
+	"github.com/gredinger/pathfinder/view"
 )
 
 func main() {
-	water := model.GenerateWater(50, 80)
-	for i := 0; i < 30000; i++ {
-		water = controller.AgeWorld(water)
-		fmt.Printf("The world is %v years old.\n", i)
+	world := model.GenerateBase(100, 100, 0) // 0 is base image, which is water
+	world = controller.AgeWorldCycles(world, 15000)
+	fmt.Println("The world is aged 15000 years, let's take a look... and check back every 250 years") //
+	for i := 0; i < 10000; i += 250 {
+		view.GenerateWorld(world, 8, 10000+i)
+		world = controller.AgeWorldCycles(world, i)
+		fmt.Println("Aging the world a bit more... 250 years.")
 	}
-	fmt.Println(water)
-	model.GenerateWorld(water, 128, 1)
+
 	//makeImage()
 }
 
@@ -52,4 +56,8 @@ func makeImage() {
 	}
 	dc.Stroke()
 	dc.SavePNG("map5050.png")
+}
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
 }
